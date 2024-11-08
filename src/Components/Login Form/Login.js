@@ -31,7 +31,7 @@ export class Login extends Component {
           labelText="Password"
           parentClass="Login"
         />
-        <Button />
+        <Button type="submit" text="Submit"/>
       </form>
     );
   }
