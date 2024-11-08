@@ -8,14 +8,16 @@ export class TextInput extends Component {
   render() {
     const { type, name, parentClass, labelText } = this.props;
 
+    const mainClass = `${parentClass}-${name}`
+
     return (
       <>
-        <label htmlFor={name} className={`${parentClass}-${name}-label`}>
+        <label className={`${mainClass}-label`}>
           {labelText}
           <input
             type={type}
             name={name}
-            className={`${parentClass}-${name}-input`}
+            className={`${mainClass}-input`}
             title={labelText}
             placeholder={labelText}
           />
