@@ -3,31 +3,39 @@ import TextInput from "./Text Input/TextInput";
 import Button from "./Button/Button";
 import axios from "axios";
 
-function handleSubmit(e) {
-  // Prevent the browser from reloading the page
-  e.preventDefault();
 
-  // Read the form data
-  const form = e.target;
-  const formData = new FormData(form);
-
-  const formJson = Object.fromEntries(formData.entries());
-
-  console.log(formJson);
-
-  axios.post("http://localhost:3001/api/formSubmitTest", formJson).then(() => {
-    console.log("Data sent");
-  });
-}
 
 export class Login extends Component {
+
+  constructor(props) {
+    super(props);    
+  }
+
+   handleSubmit = async (e) => {
+    // Prevent the browser from reloading the page
+    e.preventDefault();
+  
+    // Read the form data
+    const form = e.target;
+    const formData = new FormData(form);
+  
+    const formJson = Object.fromEntries(formData.entries());
+  
+    
+    const response = await axios.post("http://localhost:3001/api/currentUser", formJson)
+    const data = response.data
+    
+    console.log(data);
+  }
+
   render() {
+
     return (
-      <form className="Login" method="POST" onSubmit={handleSubmit}>
+      <form className="Login" method="POST" onSubmit={this.handleSubmit}>
         <TextInput name="email" labelText="Email" parentClass="Login" />
         <TextInput
           type="password"
-          name="password"
+          name="token"
           labelText="Password"
           parentClass="Login"
         />
