@@ -19,13 +19,12 @@ export class Login extends Component {
     const form = e.target;
     const formData = new FormData(form);
   
-    const formJson = Object.fromEntries(formData.entries());
-  
+    const formJson = Object.fromEntries(formData.entries());  
     
-    const response = await axios.post("http://localhost:3001/api/currentUser", formJson)
-    const data = response.data
+    const userDataResponse = await axios.post("http://localhost:3001/api/currentUser", formJson)
+    const userData = {responseData: userDataResponse.data, username: formJson.email, token: formJson.token}
     
-    console.log(data);
+    this.props.callbacks.setUserData(userData)    
   }
 
   render() {

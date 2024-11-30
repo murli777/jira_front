@@ -14,7 +14,7 @@ export class Modal extends Component {
 
     return (
       <>
-        <dialog className="modal" id={id} ref={this.dialog} callback={callback}>
+        <dialog className="modal" id={id} ref={this.dialog}>
           {children}
         </dialog>
       </>
