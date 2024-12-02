@@ -6,15 +6,11 @@ export class Modal extends Component {
     this.dialog = React.createRef();
   }
   render() {
-    const { children, id, isOpen } = this.props;
-
-    if(isOpen) {
-      this.dialog.showModal()
-    }
+    const { children, id } = this.props;
 
     return (
       <>
-        <dialog className="modal" id={id} ref={this.dialog}>
+        <dialog open className="modal" id={id} ref={this.dialog}>
           {children}
         </dialog>
       </>

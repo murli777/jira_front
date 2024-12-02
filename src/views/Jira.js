@@ -13,13 +13,17 @@ export class Jira extends Component {
       token: "",
       userInfo: null,
       incidentData: [],
+      isModalOpen: true,
     };
   }
 
   setUserData = (data) => {
-    this.setState({ userInfo: data.responseData });
-    this.setState({ username: data.username });
-    this.setState({ token: data.token });
+    this.setState({
+      userInfo: data.responseData,
+      username: data.username,
+      token: data.token,
+      isModalOpen: false,
+    });
   };
 
   setIncidentData = (data) => {
@@ -29,7 +33,7 @@ export class Jira extends Component {
   render() {
     return (
       <div>
-        {(
+        {(this.state.isModalOpen && (
           <Modal
             children={
               <Login
@@ -40,10 +44,10 @@ export class Jira extends Component {
               />
             }
           />
-        ) || (
+        )) || (
           <div>
-            <UserInfo props={{ ...this.userInfo }} />
-            <IncidentInfo />
+            <UserInfo props={this.state.userInfo} />
+            {/* <IncidentInfo /> */}
           </div>
         )}
       </div>

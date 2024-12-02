@@ -1,17 +1,18 @@
-import React, { Component } from 'react'
+import React, { Component } from "react";
 
 export class UserInfo extends Component {
   render() {
+    const { email, name, avatar } = this.props;
 
-    const {email, name, avatar} = this.props;
+    console.log(this.props);
 
     return (
-      <div className='UserInfo'>
+      <div className="UserInfo">
         {name}
         {email}
       </div>
-    )
+    );
   }
 }
 
-export default UserInfo
+export default UserInfo;
